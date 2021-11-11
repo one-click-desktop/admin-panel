@@ -47,4 +47,21 @@ describe('ConfigurationService', () => {
 
     expect(ConfigurationService.getToken()).toBe(token);
   });
+
+  test('get token should return token', () => {
+    const token = chance.string();
+
+    service.token = token;
+
+    expect(service.token).toBe(token);
+  });
+
+  test('clearToken should clear token', () => {
+    const token = chance.string();
+    service.token = token;
+
+    service.clearToken();
+
+    expect(service.token).toBeFalsy();
+  });
 });
