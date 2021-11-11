@@ -29,7 +29,6 @@ export class LoggedInGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(this.loggedInService.isLoggedIn());
     return this.loggedInService.isLoggedIn()
       ? true
       : this.router.navigate([PathConstants.LOGIN]);
