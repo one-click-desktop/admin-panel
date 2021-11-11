@@ -1,0 +1,20 @@
+<div class="header">{{ header }}</div>
+<div class="chart" *ngIf="resource">
+  <div class="chart-pie">
+    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+  </div>
+  <div class="chart-legend">
+    <div class="chart-legend-entry">
+      <div class="colorbox" [style]="{ 'background-color': colors.free }"></div>
+      Free: {{ resource.free }}
+    </div>
+    <div class="chart-legend-entry">
+      <div class="colorbox" [style]="{ 'background-color': colors.used }"></div>
+      Used: {{ resource.total - resource.free }}
+    </div>
+    <div class="chart-legend-entry">
+      <div class="colorbox"></div>
+      Total: {{ resource.total }}
+    </div>
+  </div>
+</div>

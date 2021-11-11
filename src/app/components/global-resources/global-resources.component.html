@@ -1,0 +1,19 @@
+<div class="header">Total resources:</div>
+<div class="resources" *ngIf="resources">
+  <app-resource-pie-chart
+    [header]="'CPU:'"
+    [resource]="resources.cpu"
+  ></app-resource-pie-chart>
+  <app-resource-pie-chart
+    [header]="'GPU:'"
+    [resource]="resources.gpu"
+  ></app-resource-pie-chart>
+  <app-resource-pie-chart
+    [header]="'Storage:'"
+    [resource]="resources.storage"
+  ></app-resource-pie-chart>
+  <app-resource-pie-chart
+    [header]="'Memory:'"
+    [resource]="resources.memory"
+  ></app-resource-pie-chart>
+</div>

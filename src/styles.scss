@@ -7,3 +7,10 @@
 @use "~@fortawesome/fontawesome-free/scss/regular";
 
 @use "app/styles/logo";
+@use "app/styles/chart";
+
+html,
+body {
+  height: 100%;
+  font-size: 20px;
+}
