@@ -9,7 +9,8 @@
     "cy:open": "cypress open",
     "test": "jest",
     "test:watch": "jest --watch --detectOpenHandles",
-    "test:coverage": "jest --coverage --detectOpenHandles"
+    "test:coverage": "jest --coverage --detectOpenHandles",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
