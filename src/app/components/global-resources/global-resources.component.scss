@@ -1,0 +1,15 @@
+@use "src/app/styles/colors";
+
+.header {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+.resources {
+  border-radius: 0.5rem;
+  background-color: colors.$resources-background;
+  padding: 0.2rem;
+  display: flex;
+  gap: 0.2rem;
+}

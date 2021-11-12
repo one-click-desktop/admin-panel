@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ChartModule } from 'primeng/chart';
+
 import { TopbarComponent } from '@components/topbar/topbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApiModule } from '@one-click-desktop/api-module';
@@ -12,15 +14,29 @@ import { LoginComponent } from '@views/login/login.component';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { GlobalResourcesComponent } from './components/global-resources/global-resources.component';
+import { ResourcePieChartComponent } from './components/resource-pie-chart/resource-pie-chart.component';
+import { ServerResourcesComponent } from './components/server-resources/server-resources.component';
+import { ServersListComponent } from './components/servers-list/servers-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, TopbarComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    TopbarComponent,
+    HomeComponent,
+    ServersListComponent,
+    GlobalResourcesComponent,
+    ServerResourcesComponent,
+    ResourcePieChartComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
     FormsModule,
+    ChartModule,
     ApiModule.forRoot(ConfigurationService.getConfiguration),
   ],
   providers: [],

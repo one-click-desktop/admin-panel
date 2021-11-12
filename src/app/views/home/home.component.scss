@@ -1,5 +1,8 @@
 @use "/src/app/styles/colors";
 
+$gap: 2rem;
+$padding: 2rem;
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -13,5 +16,23 @@
     flex: 1 1 auto;
     flex-basis: 0;
     background-color: colors.$background-color;
+
+    &-flex {
+      display: flex;
+      justify-content: center;
+      padding: $padding;
+      gap: 2 * $gap;
+    }
+
+    &-servers {
+      height: 100%;
+    }
+
+    &-resources {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: $gap;
+    }
   }
 }

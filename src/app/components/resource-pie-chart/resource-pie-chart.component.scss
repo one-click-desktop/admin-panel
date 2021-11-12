@@ -1,0 +1,33 @@
+@use "src/app/styles/colors";
+
+$colorbox-size: 0.75rem;
+
+.header {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.chart {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+
+  &-legend {
+    background-color: colors.$legend-background;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    &-entry {
+      .colorbox {
+        display: inline-block;
+        height: $colorbox-size;
+        width: $colorbox-size;
+        vertical-align: baseline;
+      }
+    }
+  }
+
+  &-pie {
+  }
+}

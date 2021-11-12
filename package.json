@@ -5,7 +5,7 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "ng:e2e": "ng e2e",
+    "e2e": "ng e2e",
     "cy:open": "cypress open",
     "test": "jest",
     "test:watch": "jest --watch --detectOpenHandles",
@@ -26,6 +26,9 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@one-click-desktop/api-module": "^1.0.0",
     "bootstrap": "^4.5.0",
+    "chart.js": "^3.6.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.0.0-rc.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
