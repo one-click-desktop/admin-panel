@@ -1,1 +1,41 @@
-<p>server-resources works!</p>
+<div class="header">Server details:</div>
+<div class="details">
+  <div class="machines">
+    <div class="machines-list machines-running" *ngIf="server?.running">
+      <div class="machines-header">Running:</div>
+      <div class="machines-item" *ngFor="let machine of server.running">
+        <span class="machines-item-type">{{ machine.type }}:</span>
+        <span>{{ machine.amount }}</span>
+      </div>
+    </div>
+    <div class="machines-list machines-free" *ngIf="server?.free">
+      <div class="machines-header">Free:</div>
+      <div class="machines-item" *ngFor="let machine of server.free">
+        <span class="machines-item-type">{{ machine.type }}:</span>
+        <span>{{ machine.amount }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="resources" *ngIf="server?.resources">
+    <div class="resources-row">
+      <app-resource-pie-chart
+        [header]="'CPU:'"
+        [resource]="server.resources.cpu"
+      ></app-resource-pie-chart>
+      <app-resource-pie-chart
+        [header]="'GPU:'"
+        [resource]="server.resources.gpu"
+      ></app-resource-pie-chart>
+    </div>
+    <div class="resources-row">
+      <app-resource-pie-chart
+        [header]="'Storage:'"
+        [resource]="server.resources.storage"
+      ></app-resource-pie-chart>
+      <app-resource-pie-chart
+        [header]="'Memory:'"
+        [resource]="server.resources.memory"
+      ></app-resource-pie-chart>
+    </div>
+  </div>
+</div>

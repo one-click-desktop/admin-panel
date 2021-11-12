@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Server } from '@one-click-desktop/api-module';
 
 @Component({
   selector: 'app-server-resources',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./server-resources.component.scss'],
 })
 export class ServerResourcesComponent {
+  @Input()
+  server: Server;
+
   constructor() {}
 }

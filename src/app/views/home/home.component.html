@@ -7,6 +7,7 @@
       <div class="content-servers">
         <app-servers-list
           [servers]="totalResources?.servers"
+          (selectedChanged)="serverSelected($event)"
         ></app-servers-list>
       </div>
       <div class="content-resources">
@@ -15,8 +16,10 @@
             [resources]="totalResources?.total"
           ></app-global-resources>
         </div>
-        <div class="content-server">
-          <app-server-resources></app-server-resources>
+        <div class="content-server" *ngIf="selectedServer">
+          <app-server-resources
+            [server]="selectedServer"
+          ></app-server-resources>
         </div>
       </div>
     </div>

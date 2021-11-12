@@ -1,11 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { Chance } from 'chance';
 import { of } from 'rxjs';
 import { mocked, MockedObject } from 'ts-jest/dist/utils/testing';
 
 import { ResourcesService } from '@one-click-desktop/api-module';
+import { getServerFixture } from '@testing/fixtures';
 
 import { HomeComponent } from './home.component';
 
@@ -65,5 +67,25 @@ describe('HomeComponent', () => {
     component.getResources();
 
     expect(resourcesService.getResources).toHaveBeenCalled();
+  });
+
+  test('serverSelected should set selected server', () => {
+    const server = getServerFixture();
+    component.selectedServer = null;
+
+    component.serverSelected(server);
+
+    expect(component.selectedServer).toBe(server);
+  });
+
+  test('should call serverSelected when server list emits selectedChanged', () => {
+    const spy = jest.spyOn(component, 'serverSelected');
+    const server = getServerFixture();
+    fixture.detectChanges();
+
+    const elem = debugElement.query(By.css('app-servers-list'));
+    elem.triggerEventHandler('selectedChanged', server);
+
+    expect(spy).toHaveBeenCalledWith(server);
   });
 });

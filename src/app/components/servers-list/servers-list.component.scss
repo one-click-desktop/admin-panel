@@ -10,13 +10,32 @@
   border-radius: 0.25rem;
   background-color: colors.$resources-background;
   padding: 0.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+
+  &-items {
+    gap: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: min-content;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 65vh;
+  }
 
   .item {
     padding: 0.2rem 1rem;
     border: 0.04rem solid colors.$server-border-color;
     background-color: colors.$server-background;
+
+    &:hover {
+      background-color: colors.$server-hover-background;
+    }
+
+    &-selected {
+      background-color: colors.$server-selected-background;
+
+      &:hover {
+        background-color: colors.$server-selected-background;
+      }
+    }
   }
 }
