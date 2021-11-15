@@ -41,11 +41,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     // };
     // const machines = [
     //   {
-    //     type: MachineType.Cpu,
+    //     type: {
+    //       name: 'Cpu',
+    //       code: 0,
+    //     },
     //     amount: 8,
     //   },
     //   {
-    //     type: MachineType.Gpu,
+    //     type: {
+    //       name: 'Gpu',
+    //       code: 0,
+    //     },
     //     amount: 8,
     //   },
     // ];
