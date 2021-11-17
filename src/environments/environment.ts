@@ -4,7 +4,7 @@
 
 export const APP_CONFIG = {
   production: false,
-  basePath: '',
+  basePath: 'http://localhost:5000',
 };
 
 /*
