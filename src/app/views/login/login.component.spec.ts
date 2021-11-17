@@ -6,8 +6,9 @@ import { Chance } from 'chance';
 import { of, throwError } from 'rxjs';
 import { mocked, MockedObject } from 'ts-jest/dist/utils/testing';
 
-import { LoginService } from '@one-click-desktop/api-module';
+import { LoginService, Token } from '@one-click-desktop/api-module';
 import { LoggedInService } from '@services/loggedin/loggedin.service';
+import { getTokenFixture } from '@testing/fixtures';
 
 import { LoginComponent } from './login.component';
 
@@ -61,12 +62,27 @@ describe('LoginComponent', () => {
   test('onSubmit should call login when login succeeds', () => {
     const token = chance.string();
     const login = { login: chance.string(), password: chance.string() };
-    loginService.login.mockReturnValueOnce(of({ token: token } as any));
+    loginService.login.mockReturnValueOnce(
+      of(getTokenFixture({ token: token }) as any)
+    );
     component.login = login;
 
     component.onSubmit();
 
     expect(loggedInService.login).toHaveBeenCalledWith(login, token);
+  });
+
+  test('onSubmit should set error string to login incorrect when login succeeds but wrong role', () => {
+    const login = { login: chance.string(), password: chance.string() };
+    loginService.login.mockReturnValueOnce(
+      of(getTokenFixture({ role: Token.RoleEnum.User }) as any)
+    );
+    component.login = login;
+
+    component.onSubmit();
+
+    expect(component.error).toBe('Login or password incorrect');
+    expect(loggedInService.login).toHaveBeenCalledTimes(0);
   });
 
   test('onSubmit should set error string to login incorrect if error has code 401', () => {
