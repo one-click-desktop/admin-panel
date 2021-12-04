@@ -40,16 +40,11 @@ export class LoginComponent {
           this.loggedInService.login(this.login, token.token);
         },
         (error) => {
-          this.error = error?.code === 401 ? INVALID_LOGIN : NO_CONNECTION;
+          this.error = error?.status === 401 ? INVALID_LOGIN : NO_CONNECTION;
         }
       )
       .add(() => {
         this.processing = false;
       });
-  }
-
-  // !REMOVE
-  cont(): void {
-    this.loggedInService.login(this.login, 'abc');
   }
 }

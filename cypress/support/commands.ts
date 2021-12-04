@@ -41,3 +41,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (login, password) => {
+  cy.visit('/login').url().should('contain', '/login');
+
+  cy.get('input#loginInput').type(login);
+  cy.get('input#passwordInput').type(password);
+
+  cy.get('button').click();
+
+  cy.url().should('include', '/home');
+});
