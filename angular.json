@@ -79,7 +79,7 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "one-click-desktop-client:build"
+            "browserTarget": "one-click-desktop-admin:build"
           },
           "configurations": {
             "production": {
@@ -110,19 +110,19 @@
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "one-click-desktop-client:serve",
+            "devServerTarget": "one-click-desktop-admin:serve",
             "watch": true,
             "headless": false
           },
           "configurations": {
             "dev": {
-              "browserTarget": "one-click-desktop-client:serve:dev"
+              "browserTarget": "one-click-desktop-admin:serve:dev"
             },
             "web": {
-              "browserTarget": "one-click-desktop-client:serve:web"
+              "browserTarget": "one-click-desktop-admin:serve:web"
             },
             "production": {
-              "browserTarget": "one-click-desktop-client:serve:production"
+              "browserTarget": "one-click-desktop-admin:serve:production"
             }
           }
         }

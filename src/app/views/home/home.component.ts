@@ -18,72 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   resourcesSub: Subscription;
   selectedServer: Server;
 
-  constructor(private resourceService: ResourcesService) {
-    // !REMOVE
-    // Uncomment below to test with mock data
-    // const resources = {
-    //   memory: {
-    //     free: 123,
-    //     total: 300,
-    //   },
-    //   cpu: {
-    //     free: 123,
-    //     total: 300,
-    //   },
-    //   gpu: {
-    //     free: 123,
-    //     total: 300,
-    //   },
-    //   storage: {
-    //     free: 123,
-    //     total: 300,
-    //   },
-    // };
-    // const machines = [
-    //   {
-    //     type: {
-    //       name: 'Cpu',
-    //       code: 0,
-    //     },
-    //     amount: 8,
-    //   },
-    //   {
-    //     type: {
-    //       name: 'Gpu',
-    //       code: 0,
-    //     },
-    //     amount: 8,
-    //   },
-    // ];
-    // const server = {
-    //   name: 'asd',
-    //   address: {
-    //     address: 'localhost',
-    //     port: 1444,
-    //   },
-    //   running: machines,
-    //   resources: resources,
-    //   free: machines,
-    // };
-    // this.totalResources = {
-    //   servers: [
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //     server,
-    //   ],
-    //   total: resources,
-    // };
-    // this.selectedServer = this.totalResources.servers[0];
-  }
+  constructor(private resourceService: ResourcesService) {}
 
   ngOnInit(): void {
     this.resourcesSub = timer(0, TimeConstants.RESOURCES_WAIT_TIME).subscribe(
