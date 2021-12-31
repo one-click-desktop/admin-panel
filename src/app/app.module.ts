@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ChartModule } from 'primeng/chart';
 
 import { TopbarComponent } from '@components/topbar/topbar.component';
+import { CorsInterceptor } from '@interceptors/cors/cors.interceptor';
+import { HttpErrorInterceptor } from '@interceptors/http-error/http-error.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApiModule } from '@one-click-desktop/api-module';
 import { ConfigurationService } from '@services/configuration/configuration.service';
@@ -39,7 +41,18 @@ import { ServersListComponent } from './components/servers-list/servers-list.com
     ChartModule,
     ApiModule.forRoot(ConfigurationService.getConfiguration),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,24 +4,29 @@
   </div>
   <div class="content">
     <div class="content-flex">
-      <div class="content-servers">
-        <app-servers-list
-          [servers]="totalResources?.servers"
-          (selectedChanged)="serverSelected($event)"
-        ></app-servers-list>
-      </div>
-      <div class="content-resources">
-        <div class="content-global-resources">
-          <app-global-resources
-            [resources]="totalResources?.total"
-          ></app-global-resources>
+      <ng-container *ngIf="totalResources; else noResources">
+        <div class="content-servers">
+          <app-servers-list
+            [servers]="totalResources?.servers"
+            (selectedChanged)="serverSelected($event)"
+          ></app-servers-list>
         </div>
-        <div class="content-server" *ngIf="selectedServer">
-          <app-server-resources
-            [server]="selectedServer"
-          ></app-server-resources>
+        <div class="content-resources">
+          <div class="content-global-resources">
+            <app-global-resources
+              [resources]="totalResources?.total"
+            ></app-global-resources>
+          </div>
+          <div class="content-server" *ngIf="selectedServer">
+            <app-server-resources
+              [server]="selectedServer"
+            ></app-server-resources>
+          </div>
         </div>
-      </div>
+      </ng-container>
+      <ng-template #noResources>
+        <div class="no-resources">No servers in system</div>
+      </ng-template>
     </div>
   </div>
 </div>
