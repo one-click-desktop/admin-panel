@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { Chance } from 'chance';
 import { of } from 'rxjs';
@@ -37,7 +36,7 @@ describe('HomeComponent', () => {
     resourcesService = mocked(TestBed.inject(ResourcesService));
     resourcesService.getResources.mockReturnValue(
       of({
-        servers: [],
+        servers: [getServerFixture()],
         total: null,
       } as any)
     );
@@ -76,16 +75,5 @@ describe('HomeComponent', () => {
     component.serverSelected(server);
 
     expect(component.selectedServer).toBe(server);
-  });
-
-  test('should call serverSelected when server list emits selectedChanged', () => {
-    const spy = jest.spyOn(component, 'serverSelected');
-    const server = getServerFixture();
-    fixture.detectChanges();
-
-    const elem = debugElement.query(By.css('app-servers-list'));
-    elem.triggerEventHandler('selectedChanged', server);
-
-    expect(spy).toHaveBeenCalledWith(server);
   });
 });
