@@ -50,13 +50,15 @@ export class ResourcePieChartComponent implements OnInit, OnChanges {
 
   updateData(): void {
     if (this.resource) {
+      const emptyResource = !this.resource.free && !this.resource.total;
+
       this.data = {
-        labels: ['free', 'taken'],
+        labels: ['taken', 'free'],
         datasets: [
           {
             data: [
-              this.resource.total - this.resource.free,
-              this.resource.free,
+              emptyResource ? 0 : this.resource.total - this.resource.free,
+              emptyResource ? 1 : this.resource.free,
             ],
             backgroundColor: Object.values(this.colors),
           },
