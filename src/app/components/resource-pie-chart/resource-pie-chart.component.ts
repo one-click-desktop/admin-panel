@@ -51,12 +51,12 @@ export class ResourcePieChartComponent implements OnInit, OnChanges {
   updateData(): void {
     if (this.resource) {
       this.data = {
-        labels: ['free', 'taken'],
+        labels: ['taken', 'free'],
         datasets: [
           {
             data: [
-              this.resource.total - this.resource.free,
-              this.resource.free,
+              this.resource.total - this.resource.free || 0,
+              this.resource.free || 1,
             ],
             backgroundColor: Object.values(this.colors),
           },
