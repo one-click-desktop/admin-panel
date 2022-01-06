@@ -1,4 +1,4 @@
 export const APP_CONFIG = {
   production: true,
-  basePath: '',
+  basePath: window['env']['basePath'] || 'http://localhost:5000',
 };
