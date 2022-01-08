@@ -1,6 +1,7 @@
 export const ColorConstants = {
+  // order of fields defines order of sets in pie chart
   pieChart: {
-    free: '#40e978',
     used: '#da5050',
+    free: '#40e978',
   },
 };
